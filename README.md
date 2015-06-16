@@ -1,0 +1,1 @@
+# WooCommerce-POS-Test-Theme
