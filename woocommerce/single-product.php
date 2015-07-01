@@ -1,0 +1,1 @@
+Template: woocommerce/single-product.php

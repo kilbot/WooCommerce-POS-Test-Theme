@@ -1,1 +1,1 @@
-<?php // silence
+Template: index.php
