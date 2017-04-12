@@ -3,10 +3,14 @@
 /**
  * Grant admin WC REST API privileges to all users
  */
-function test_open_api(){
-  return new WP_User(1);
+function wcpos_authenticate($user_id) {
+    if( version_compare( WC()->version, '3', '<' ) ){
+      return $user_id;
+    } else {
+      return 1;
+    }
 }
-add_filter( 'woocommerce_api_check_authentication', 'test_open_api', 99 );
+add_filter( 'determine_current_user', 'wcpos_authenticate', 10 );
 
 /**
  * Test woocommerce_admin_billing_fields filter
@@ -20,7 +24,7 @@ add_filter( 'woocommerce_api_check_authentication', 'test_open_api', 99 );
 /**
  * Test woocommerce_pos_product_barcode filter
  */
-function test_product_barcode($sku, $product){
-  return $sku;
-}
-add_filter('woocommerce_pos_product_barcode', 'test_product_barcode', 10, 2);
+// function test_product_barcode($sku, $product){
+//   return $sku;
+// }
+// add_filter('woocommerce_pos_product_barcode', 'test_product_barcode', 10, 2);
